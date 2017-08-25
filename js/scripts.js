@@ -11,6 +11,6 @@ $(document).ready(function() {
     var userInput = $("#pizzaInput").val();
     var sizeInput = $("#sizeInput").val();
     var newPizza = new PizzaCreator(userInput, sizeInput);
-    $(".pizzaOutput").append(newPizza.size + " " + newPizza.pizza);
+    $(".pizzaOutput").text(newPizza.size + " " + newPizza.pizza);
   });
 });
