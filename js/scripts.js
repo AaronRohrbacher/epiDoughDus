@@ -32,11 +32,6 @@ function cartTotal(fullCart) {
   return total
 }
 
-// function viewCart() {
-//   for (i=0; i < cart.length; ++i) {
-//
-// }
-
 //UI logic
 $(document).ready(function() {
 
@@ -47,20 +42,17 @@ $(document).ready(function() {
     event.preventDefault();
 
     var pizzaInput = $("#pizzaInput").val();
-    var sizePrice = pizzaMenu.price[$("#sizeInput").val()].toFixed(2);
+    var sizePrice = pizzaMenu.price[$("#sizeInput").val()];
     var sizeInput = pizzaMenu.item[$("#sizeInput").val()] + " " + sizePrice;
-    // pizzaMenu.displayItem.push("(" + sizePrice + ")")
     pizzaMenu.itemPrice.push(sizePrice);
     var newPizza = new PizzaCreator(pizzaInput, sizeInput, pizzaMenu.displayItem);
-    var pizzaTotal = newPizza.price().toFixed(2);
-    // $(".pizzaOutput").text(newPizza.size + " " + newPizza.pizza + "  with " + newPizza.toppings + " Pizza Total: " + pizzaTotal);
+    var pizzaTotal = newPizza.price();
     newPizza.total = pizzaTotal;
     toCart(newPizza)
-    console.log(cart);
     $.each(cart, function(i, val) {
       $(".viewCart").append("<li>" + cart[i].size + " " + cart[i].pizza + " " + cart[i].toppings.join() + " <strong>" + cart[i].total +"</strong></li>");
     });
-    var orderTotal = cartTotal(cart);
+    var orderTotal = cartTotal(cart).toFixed(2);
     $("#orderTotal").text("Order Total: " + orderTotal);
     $("#addedToppings").empty();
 
@@ -68,7 +60,7 @@ $(document).ready(function() {
   //add toppings to empty array for later construction in object
   $("#addToppingButton").click(function() {
     var topping = pizzaMenu.item[parseInt($("#toppingsInput").val())];
-    var toppingPrice = pizzaMenu.price[parseInt($("#toppingsInput").val())].toFixed(2);
+    var toppingPrice = pizzaMenu.price[parseInt($("#toppingsInput").val())];
     pizzaMenu.displayItem.push(" " + topping + " (add " + toppingPrice + ")")
     pizzaMenu.itemPrice.push(toppingPrice);
     $("#addedToppings").text(pizzaMenu.displayItem);
