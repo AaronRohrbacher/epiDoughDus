@@ -1,6 +1,7 @@
 //Business logic
-function PizzaCreator (pizza) {
+function PizzaCreator (pizza, size) {
   this.pizza = pizza;
+  this.size = size
 }
 
 //UI logic
@@ -8,7 +9,8 @@ $(document).ready(function() {
   $("#pizzaForm").submit(function(event) {
     event.preventDefault();
     var userInput = $("#pizzaInput").val();
-    var newPizza = new PizzaCreator(userInput);
-    $(".pizzaOutput").append(newPizza.pizza);
+    var sizeInput = $("#sizeInput").val();
+    var newPizza = new PizzaCreator(userInput, sizeInput);
+    $(".pizzaOutput").append(newPizza.size + " " + newPizza.pizza);
   });
 });
