@@ -16,7 +16,7 @@ PizzaCreator.prototype.price = function() {
     total += parseFloat(pizzaMenu.itemPrice[i]);
   }
   return total;
-}
+};
 
 function toCart (cartItem) {
   cart.push(cartItem);
@@ -29,7 +29,7 @@ function cartTotal(fullCart) {
   for (i=0; i < fullCart.length; ++i) {
     total += parseFloat(fullCart[i].total);
   }
-  return total
+  return total;
 }
 
 //UI logic
@@ -48,7 +48,7 @@ $(document).ready(function() {
     var newPizza = new PizzaCreator(pizzaInput, sizeInput, pizzaMenu.displayItem);
     var pizzaTotal = newPizza.price();
     newPizza.total = pizzaTotal;
-    toCart(newPizza)
+    toCart(newPizza);
     $.each(cart, function(i, val) {
       $(".viewCart").append("<li>" + cart[i].size + " " + cart[i].pizza + " " + cart[i].toppings.join() + " <strong>" + cart[i].total +"</strong></li>");
     });
@@ -61,7 +61,7 @@ $(document).ready(function() {
   $("#addToppingButton").click(function() {
     var topping = pizzaMenu.item[parseInt($("#toppingsInput").val())];
     var toppingPrice = pizzaMenu.price[parseInt($("#toppingsInput").val())];
-    pizzaMenu.displayItem.push(" " + topping + " (add " + toppingPrice + ")")
+    pizzaMenu.displayItem.push(" " + topping + " (add " + toppingPrice + ")");
     pizzaMenu.itemPrice.push(toppingPrice);
     $("#addedToppings").text(pizzaMenu.displayItem);
   });
