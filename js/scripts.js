@@ -12,7 +12,7 @@ function PizzaCreator (pizza, size, toppings, total) {
 
 PizzaCreator.prototype.price = function() {
   var total = 0;
-  for (i=0; i < pizzaMenu.itemPrice.length; ++i) {
+  for (var i=0; i < pizzaMenu.itemPrice.length; ++i) {
     total += parseFloat(pizzaMenu.itemPrice[i]);
   }
   return total;
@@ -26,7 +26,7 @@ function toCart (cartItem) {
 
 function cartTotal(fullCart) {
   var total = 0;
-  for (i=0; i < fullCart.length; ++i) {
+  for (var i=0; i < fullCart.length; ++i) {
     total += parseFloat(fullCart[i].total);
   }
   return total;
