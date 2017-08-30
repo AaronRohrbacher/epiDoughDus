@@ -17,26 +17,27 @@ function PointOfSale() {
   this.price = [12, 7, 5, .5, .99, .75];
   this.cartItemPrice = [];
   this.cart = [];
-}
+};
 
 PointOfSale.prototype.toCart = function (cartItem, itemPrice) {
   this.cart.push(cartItem);
   this.cartItemPrice.push(itemPrice);
-}
+};
 
 PointOfSale.prototype.total = function () {
   var total = 0;
   for(var i = 0; i < this.cartItemPrice.length; ++i) {
     total += this.cartItemPrice[i];
-  }
+  };
   return total;
-}
+};
 
 //UI logic
 $(document).ready(function() {
   var newPointOfSale = new PointOfSale();
   var toppings = [];
   $("#addToCart").click(function() {
+
     //Prepare cart div for added cart items
     $(".viewCart").empty();
     $("#addedToppings").empty();
@@ -56,8 +57,11 @@ $(document).ready(function() {
       $(".viewCart").append("<li>" + newPointOfSale.cart[index] + "<strong> $" + newPointOfSale.cartItemPrice[index].toFixed(2) + "</strong></li>");
     });
     $("#orderTotal").text("Order Total: $" + newPointOfSale.total().toFixed(2));
+
+    //jQuery animations
     $("#orderTotal").slideDown();
     $("#cart li").slideDown();
+
     //reset toppings array for next pizza item
     toppings = [];
   });
