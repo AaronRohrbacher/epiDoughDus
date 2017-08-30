@@ -55,7 +55,6 @@ $(document).ready(function() {
     var orderTotal = cartTotal(cart).toFixed(2);
     $("#orderTotal").text("Order Total: " + orderTotal);
     $("#addedToppings").empty();
-
   });
   //add toppings to empty array for later construction in object
   $("#addToppingButton").click(function() {
@@ -65,4 +64,6 @@ $(document).ready(function() {
     pizzaMenu.itemPrice.push(toppingPrice);
     $("#addedToppings").text(pizzaMenu.displayItem);
   });
+
+
 });
