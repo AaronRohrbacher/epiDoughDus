@@ -1,25 +1,25 @@
 //Business logic
 
 
-function PizzaCreator (size, total) {
+function PizzaCreator (size, toppings, total) {
   // this.pizza = pizza;
   this.size = size;
-  this.toppings = [];
+  this.toppings = toppings;
   this.total = total;
 };
 
-PizzaCreator.prototype.price = function() {
-  var total = 0;
-  for (var i=0; i < pointOfSale.itemPrice.length; ++i) {
-    total += parseFloat(pointOfSale.itemPrice[i]);
-  }
-  return total;
-};
+// PizzaCreator.prototype.addToppings = function(toppings) {
+//   this.total = 0;
+//   for (var i=0; i < toppings.length; ++i) {
+//     this.total += parseFloat(pointOfSale.itemPrice[i]);
+//   }
+//   return this.total;
+// };
 
 function PointOfSale() {
   this.item = ["Large Pizza", "Medium Pizza", "Small Pizza", "Pepperoni", "Sausage", "Mushrooms"];
   this.price = [12, 7, 5, .5, 1, .75];
-  this.cartItemPrice = []
+  this.cartItemPrice = [];
   this.cart = [];
 }
 // var pointOfSale = {item:["Large", "Medium", "Small", "Pepperoni", "Sausage", "Mushrooms"], price: [7.99, 5, 3, .5, 1, .75], displayItem: [], itemPrice: [], cart: []};
@@ -33,7 +33,7 @@ PointOfSale.prototype.total = function() {
 
 PointOfSale.prototype.toCart = function (cartItem, itemPrice) {
   this.cart.push(cartItem);
-  this.cartItemPrice.push(itemPrice)
+  this.cartItemPrice.push(itemPrice);
 }
 
 // function toCart (cartItem) {
@@ -53,23 +53,31 @@ PointOfSale.prototype.toCart = function (cartItem, itemPrice) {
 //UI logic
 $(document).ready(function() {
   var newPointOfSale = new PointOfSale();
-    $("#addToppingButton").click(function() {
-      var newTopping = parseInt($("#toppingsInput").val())
-      console.log(newTopping);
-  });
-
+  var toppings = [];
   $("#addToCart").click(function() {
     $(".viewCart").empty();
+    $("#addedToppings").empty();
     event.preventDefault();
     var itemIndexInput = parseInt($("#sizeInput").val());
-    var newPizza = new PizzaCreator(newPointOfSale.item[itemIndexInput],newPointOfSale.price[itemIndexInput]);
+    var newPizza = new PizzaCreator(newPointOfSale.item[itemIndexInput], toppings, newPointOfSale.price[itemIndexInput]);
     newPointOfSale.toCart(newPizza.size, parseFloat(newPizza.total));
-    console.log(newPointOfSale.cart);
-    console.log(newPointOfSale.cartItemPrice);
     $.each(newPointOfSale.cart, function(index, value) {
       $(".viewCart").append("<li>" + newPointOfSale.cart[index] + " " + newPointOfSale.cartItemPrice[index] + "</li>");
     });
+    console.log(newPizza);
+    console.log(toppings);
+    console.log(newPointOfSale.cart);
+    toppings = [];
   });
+  $("#addToppingButton").click(function() {
+    $("#addedToppings").empty();
+    var newTopping = parseInt($("#toppingsInput").val());
+    toppings.push(newTopping);
+    $.each(toppings, function (index, value) {
+      $("#addedToppings").append(newPointOfSale.item[value] + " ")
+    });
+});
+
 });
   //add toppings to empty array for later construction in object
   // $("#addToppingButton").click(function() {
