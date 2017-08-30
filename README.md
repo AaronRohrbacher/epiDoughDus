@@ -11,7 +11,7 @@
 |---------------------------------------------------------------|----------------------------------|---------------------------------------------------------------------------------|
 |Pizza price is based on size |Large Pizza |Large Pizza 7.99
 |Pizza price is based on size and toppings |Large Pizza, Pepperoni |Large Pizza with pepperoni 8.49
-|Pizza price is based on multiple orders of pizzas |Large pizza, pepperoni and medium pizza, sausage | Large pizza with pepperoni, medium pizza with sausage. Total: 14.49
+|Order price is based on multiple orders of pizzas |Large pizza, pepperoni and medium pizza, sausage | Large pizza with pepperoni, medium pizza with sausage. Total: 14.49
 
 ## Setup/Installation Requirements
 
