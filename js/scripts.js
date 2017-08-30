@@ -14,7 +14,7 @@ PizzaCreator.prototype.addToppings = function(toppings, pointOfSale) {
 
 function PointOfSale() {
   this.item = ["Large Pizza", "Medium Pizza", "Small Pizza", "Pepperoni", "Sausage", "Mushrooms"];
-  this.price = [12, 7, 5, .5, 1, .75];
+  this.price = [12, 7, 5, .5, .99, .75];
   this.cartItemPrice = [];
   this.cart = [];
 }
@@ -40,7 +40,7 @@ $(document).ready(function() {
     //Prepare cart div for added cart items
     $(".viewCart").empty();
     $("#addedToppings").empty();
-    
+
     event.preventDefault();
 
     //create pizza
@@ -53,10 +53,11 @@ $(document).ready(function() {
     //push to cart, display each item, display total for all items
     newPointOfSale.toCart(newPizza.size, parseFloat(newPizza.total));
     $.each(newPointOfSale.cart, function(index, value) {
-      $(".viewCart").append("<li>" + newPointOfSale.cart[index] + " " + newPointOfSale.cartItemPrice[index] + "</li>");
+      $(".viewCart").append("<li>" + newPointOfSale.cart[index] + "<strong> $" + newPointOfSale.cartItemPrice[index].toFixed(2) + "</strong></li>");
     });
-    $("#orderTotal").text("Order Total: " + newPointOfSale.total());
-
+    $("#orderTotal").text("Order Total: $" + newPointOfSale.total().toFixed(2));
+    $("#orderTotal").slideDown();
+    $("#cart li").slideDown();
     //reset toppings array for next pizza item
     toppings = [];
   });

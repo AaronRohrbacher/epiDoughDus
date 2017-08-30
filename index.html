@@ -2,6 +2,7 @@
 <html>
   <head>
     <link href ="css/bootstrap.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
     <link href ="css/styles.css" rel="stylesheet" type="text/css">
     <script src= "js/jquery-3.2.1.js"></script>
     <script src ="js/scripts.js"></script>
@@ -9,43 +10,42 @@
   </head>
   <body>
     <div class ="container">
-      <div class ="jumbotron">
-        <img src = "img/logo.png" alt = "EpiDoughDus">
-        <h2>Select your dough!</h2>
-        <div class="form-group">
-          <form id ="pizzaForm">
-            <label for ="pizzaInput">Whaddya want?</label>
-            <select class="form-control" id="pizzaInput">
-            <option value="Pizza">Pizza</option>
-            </select>
-            <label for ="sizeInput">How big?</label>
-            <select class ="form-control" id="sizeInput">
-              <option value="0">Large</option>
-              <option value="1">Medium</option>
-              <option value="2">Small</option>
-            </select>
-            <label for ="toppingsInput">Whaddya like?</label>
-            <select class = "form-control" id="toppingsInput">
-              <option value ="3">Pepperoni</option>
-              <option value ="4">Sausage</option>
-              <option value ="5">Mushrooms</option>
-            </select>
-            <p class ="btn btn-primary" id="addToppingButton">Add it!</p>
-            <p>Toppings added so far: <span id="addedToppings"></span></p><br>
-
-            <button type ="submit" class="btn btn-primary" id ="addToCart">Add To Cart</button>
-          </form>
-
+      <div class = "row">
+        <div class = "col-md-6">
+          <div class ="jumbotron">
+            <img src = "img/logo.png" alt = "EpiDoughDus">
+            <h2>Select your dough!</h2>
+            <div class="form-group">
+              <form id ="pizzaForm">
+                <label for ="sizeInput">How big?</label>
+                <select class ="form-control" id="sizeInput">
+                  <option value="0">Large</option>
+                  <option value="1">Medium</option>
+                  <option value="2">Small</option>
+                </select>
+                <label for ="toppingsInput">Whaddya like?</label>
+                <select class = "form-control" id="toppingsInput">
+                  <option value ="3">Pepperoni</option>
+                  <option value ="4">Sausage</option>
+                  <option value ="5">Mushrooms</option>
+                </select>
+                <p class ="btn btn-primary" id="addToppingButton">Add it!</p>
+                <p>Toppings added so far: <span id="addedToppings"></span></p><br>
+                <button type ="submit" class="btn btn-primary" id ="addToCart">Add To Cart</button>
+              </form>
+            </div><!--End form-group-->
+          </div><!--End jumbotron-->
+        </div><!--End col 6-->
+        <div class = "col-md-6 heading" id="cart">
+          <h2>My Cart:</h2>
+          <ul class="viewCart">
+          </ul>
+        </div><!--End col 6-->
+      </div><!--End row-->
+      <div class ="row center">
+        <div id="orderTotal" class="alert alert-info" role="alert">
         </div>
-      </div>
-      <div class ="pizzaOutput">
-      </div>
-      <div>
-        <h2>My Cart:</h2>
-        <ul class="viewCart">
-        </ul>
-        <h2 id="orderTotal"></h2>
-      </div>
+      </div><!--End Row-->
     </div>
   </body>
 </html>
